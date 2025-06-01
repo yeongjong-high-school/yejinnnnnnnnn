@@ -1,0 +1,491 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --accent-color: #f1c40f;
+  --light-bg: #ecf0f1;
+  --dark-text: #2c3e50;
+  --light-text: #ffffff;
+  --border-color: #bdc3c7;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --disabled-bg: #e9ecef;
+}
+
+body {
+  font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 15px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  color: var(--primary-color);
+  font-size: 2.8em;
+  margin-bottom: 0.3em;
+  font-weight: 700;
+}
+header p {
+  font-size: 1.15em;
+  color: #7f8c8d;
+}
+
+.content-section {
+  background-color: var(--card-bg);
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  color: var(--dark-text);
+  font-size: 2em;
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--primary-color);
+  font-weight: 600;
+}
+
+h3 {
+  color: var(--primary-color);
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+h4 {
+    font-size: 1.2em;
+    color: var(--dark-text);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+#category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.category-button {
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  color: var(--dark-text);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #e2e6ea;
+  transform: translateY(-2px);
+}
+.category-button.active {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  border-color: var(--primary-color);
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.appliance-list-container {
+    min-height: 120px;
+    padding-top: 15px;
+}
+.appliance-list-container .category-title {
+    font-size: 1.4em;
+    color: var(--dark-text);
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.appliance-item {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  border: 1px solid var(--border-color);
+  background-color: #fff;
+}
+.appliance-item:hover {
+    background-color: #fdfdfe;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.appliance-item input[type="checkbox"] {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--secondary-color);
+}
+.appliance-item label.appliance-name {
+    font-size: 1.1em;
+    cursor: pointer;
+    flex-grow: 1;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.time-input-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.time-input-container input[type="number"] {
+    width: 55px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.95em;
+    -moz-appearance: textfield; /* Firefox에서 화살표 숨기기 */
+}
+.time-input-container input[type="number"]::-webkit-outer-spin-button,
+.time-input-container input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Chrome, Safari, Edge 등에서 화살표 숨기기 */
+}
+.time-input-container input[type="number"]:disabled {
+    background-color: var(--disabled-bg);
+    cursor: not-allowed;
+}
+.time-input-container span {
+    font-size: 0.9em;
+    color: #555;
+}
+/* 스크린 리더 전용 클래스 (선택사항) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+#selected-list li {
+  padding: 12px 8px;
+  border-bottom: 1px dashed var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+}
+#selected-list li:last-child {
+  border-bottom: none;
+}
+#selected-list .highlight-text {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+#selected-list .selected-time-info {
+    font-size: 0.9em;
+    color: #555;
+    margin-left: 10px;
+    flex-shrink: 0; /* 버튼 그룹 밀리지 않도록 */
+}
+#selected-list .button-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto; /* 오른쪽으로 밀기 */
+}
+
+
+.remove-btn, .details-btn {
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  /* margin-left: 8px; 제거 -> button-group에서 gap으로 처리 */
+}
+.remove-btn {
+  background-color: #e74c3c;
+}
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+.details-btn {
+  background-color: var(--secondary-color);
+}
+.details-btn:hover {
+  background-color: #27ae60;
+}
+
+#calculation-section .action-button {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 30px auto;
+  padding: 16px 30px;
+  background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--light-text);
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  font-size: 1.25em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+#calculation-section .action-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#energy-results h4, #energy-main-recommendations h4 {
+  font-size: 1.5em;
+  color: var(--dark-text);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+#energy-results .total-kwh-container {
+    text-align: center;
+    margin: 20px 0 30px;
+}
+#energy-results .total-kwh-label {
+    font-size: 1.1em;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+#energy-results .total-kwh-value {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--accent-color);
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fffcf0;
+  border-radius: 10px;
+}
+#energy-results .result-note {
+    font-size: 0.95em;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 25px;
+}
+/* style.css 파일에 아래 스타일 추가 */
+
+/* ... 기존 CSS 코드 ... */
+
+#energy-results .comparison-message {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+#energy-results .comparison-message.high-usage {
+    background-color: #fff0f0; /* 붉은 계열 배경 */
+    color: #c0392b; /* 어두운 빨강 텍스트 */
+    border: 1px solid #e74c3c;
+}
+
+#energy-results .comparison-message.low-usage {
+    background-color: #effaf0; /* 녹색 계열 배경 */
+    color: #27ae60; /* 어두운 녹색 텍스트 */
+    border: 1px solid var(--secondary-color);
+}
+
+#energy-results .comparison-message .target-reduction {
+    display: block;
+    font-weight: bold;
+    margin-top: 8px;
+    font-size: 1.05em;
+}
+
+.appliance-item .default-time-note {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-left: 8px;
+    font-style: italic;
+}
+
+/* ... 나머지 CSS 코드 ... */
+#energy-main-recommendations ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+#energy-main-recommendations li {
+  margin-bottom: 10px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-left: 5px solid var(--secondary-color);
+  border-radius: 6px;
+}
+#energy-main-recommendations .highlight {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* 모달 스타일 */
+.modal {
+  display: none; /* 초기에는 숨김 */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  padding: 15px; /* 모바일 화면에서 모달이 화면에 꽉 차지 않도록 */
+  box-sizing: border-box;
+}
+.modal-content {
+  background-color: var(--card-bg);
+  margin: auto; /* align/justify-items 대신 사용 */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 650px;
+  position: relative; /* 닫기 버튼 위치 기준 */
+}
+.modal-close {
+  color: #aaa;
+  float: right; /* 오른쪽 정렬 유지 */
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute; /* modal-content 기준 */
+  top: 15px;
+  right: 25px;
+}
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--dark-text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal h3 { /* 모달 제목 스타일 */
+    margin-top: 0;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom:10px;
+}
+.modal ul {
+    list-style-type: '🌿 '; /* 유니코드 이모지 사용 */
+    padding-left: 25px;
+}
+.modal li {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+}
+.modal .specific-tip { /* 시간 단축 관련 팁 강조 */
+    background-color: #e8f4fd;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top:5px;
+    font-size: 1em; /* 기본 폰트 크기 */
+}
+.modal .specific-tip .highlight { /* 절약량 강조 */
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+
+.no-items-message, .no-tips-message, #selected-list .empty-message {
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.05em;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    margin: 15px;
+    padding: 10px;
+  }
+  header h1 { font-size: 2.2em; }
+  header p { font-size: 1em; }
+  .content-section { padding: 20px; }
+  h2 { font-size: 1.7em; }
+  h3 { font-size: 1.4em; }
+
+  .category-button {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+
+  .appliance-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .time-input-container {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 5px;
+  }
+  .time-input-container input[type="number"] {
+    width: 50px;
+  }
+
+  #selected-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* 요소 간 간격 */
+  }
+  #selected-list .selected-time-info {
+    margin-left: 0;
+    width: 100%; /* 전체 너비 차지 */
+    text-align: left; /* 왼쪽 정렬 */
+  }
+  #selected-list .button-group {
+    width: 100%; /* 전체 너비 차지 */
+    margin-left: 0;
+    justify-content: space-around; /* 버튼들 공간 분배 */
+  }
+  .remove-btn, .details-btn {
+    /* margin-left: 0; 제거 */
+    margin-top: 5px;
+    flex-grow: 1; /* 버튼들이 가능한 공간 차지 */
+    text-align: center;
+  }
+
+
+  #calculation-section .action-button {
+    font-size: 1.15em;
+    padding: 14px 25px;
+  }
+  #energy-results .total-kwh-value {
+    font-size: 2.2em;
+  }
+  .modal-content {
+    width: 95%; /* 모바일에서 너비 조정 */
+    padding: 20px;
+  }
+}
